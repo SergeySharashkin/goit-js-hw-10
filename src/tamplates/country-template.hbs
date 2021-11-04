@@ -1,6 +1,10 @@
-<svg class='icon'></svg>
-<h1 class='name'>
-  <p class='text'>Столица:{{capital}}</p>
-  <p class='text'>Население:{{population}}</p>
-  <p class='text'>Официальный язык:{{languages}}</p>
-</h1>
+{{#each name}}
+<p class='text'>Столица: {{capital}}</p>
+<p class='text'>Население: {{population}}</p>
+<p class='text'>Официальный язык:
+  
+  {{#each languages}}
+    <span>{{this}}</span>
+  {{/each}}
+</p>
+{{/each}}
