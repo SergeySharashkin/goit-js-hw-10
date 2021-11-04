@@ -13,8 +13,7 @@ function onInput() {
   const name = refs.input.value.trim();
   
   if (name.length===0){
-    refs.countryInfo.innerHTML = '';
-    refs.countryList.innerHTML = '';
+    ceaner();
     return
   }
   API.fetchCountries(name).then(render).catch(onError);
@@ -24,12 +23,12 @@ function render(name) {
   refs.countryList.innerHTML = countryListMarkup;
   if (name.length > 10) {
     Notiflix.Notify.info('Необходимо ввести больше символов');
-    refs.countryInfo.innerHTML = '';
-    refs.countryList.innerHTML = '';
+    ceaner();
   }
   if (name.length === 1) {
     countryInfoMarkup = countryTpl({ name });
     refs.countryInfo.innerHTML = countryInfoMarkup;
+    document.querySelector('.country-item').style.fontSize = '12px';
   } else {
     refs.countryInfo.innerHTML = '';
   }
@@ -37,4 +36,8 @@ function render(name) {
 function onError(error) {
     Notiflix.Notify.warning('Страна не найдена');
     refs.countryInfo.innerHTML = '';
+}
+function ceaner() {
+    refs.countryInfo.innerHTML = '';
+    refs.countryList.innerHTML = '';
 }
